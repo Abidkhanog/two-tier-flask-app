@@ -57,4 +57,4 @@ App will be available at `http://localhost:5000`
 
 ## Author
 
-Built by [Your Name] as a hands-on DevOps project covering containerization, CI/CD, and cloud deployment.
+Built by Abid Khan as a hands-on DevOps project covering containerization, CI/CD, and cloud deployment.
