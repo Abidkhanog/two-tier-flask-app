@@ -1,0 +1,40 @@
+version: "3.8"
+
+services:
+  flask-app:
+    build: .
+    container_name: flask-app
+    ports:
+      - "5000:5000"
+    environment:
+      MYSQL_HOST: mysql
+      MYSQL_USER: root
+      MYSQL_PASSWORD: password
+      MYSQL_DATABASE: messagedb
+    depends_on:
+      - mysql
+    restart: unless-stopped
+    networks:
+      - app-network
+
+  mysql:
+    image: mysql:8.0
+    container_name: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: messagedb
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql-data:/var/lib/mysql
+      - ./message.sql:/docker-entrypoint-initdb.d/message.sql
+    restart: unless-stopped
+    networks:
+      - app-network
+
+volumes:
+  mysql-data:
+
+networks:
+  app-network:
+    driver: bridge

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Two-Tier Flask App</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 600px; margin: 40px auto; background: #f4f4f9; }
+        h1 { color: #2c3e50; }
+        form { margin-bottom: 20px; }
+        input, textarea { width: 100%; padding: 8px; margin: 6px 0; }
+        button { padding: 8px 16px; background: #2c3e50; color: white; border: none; cursor: pointer; }
+        .msg { background: white; padding: 10px; margin: 8px 0; border-radius: 6px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+    </style>
+</head>
+<body>
+    <h1>Two-Tier Flask + MySQL App</h1>
+    <form action="/add" method="post">
+        <input type="text" name="name" placeholder="Your name" required>
+        <textarea name="message" placeholder="Your message" required></textarea>
+        <button type="submit">Submit</button>
+    </form>
+
+    {% for m in messages %}
+    <div class="msg">
+        <strong>{{ m.name }}</strong>: {{ m.message }}
+    </div>
+    {% endfor %}
+</body>
+</html>
